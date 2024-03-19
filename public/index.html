@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica MercadoPago</title>
+</head>
+<body>
+    <h1>Mercado Pago</h1>
+    <button id="pay">Pagar</button>
+    <script>
+        const btn = document.querySelector('#pay');
+        btn.addEventListener('click', () => {
+            // URL de la API a la que deseas enviar la solicitud POST
+            const apiUrl = 'http://localhost:8085/orders';
+
+            // Opciones de configuración de la solicitud
+            const options = {
+            method: 'POST', // Método HTTP
+            headers: {
+                'Content-Type': 'application/json' // Tipo de contenido del cuerpo de la solicitud
+            },
+            };
+
+            // Realizar la solicitud Fetch
+            fetch(apiUrl, options)
+            .then(response => {
+                // Verificar si la respuesta es exitosa (código de estado 200-299)
+                if (!response.ok) {
+                throw new Error('La respuesta de la API no fue exitosa');
+                }
+                // Convertir la respuesta a formato JSON
+                return response.json();
+            })
+            .then(data => {
+                // Hacer algo con los datos obtenidos de la respuesta
+                console.log(data);
+                
+            })
+            .catch(error => {
+                // Capturar y manejar errores
+                console.error('Ocurrió un error al enviar la solicitud:', error);
+            });
+        })
+    </script>
+</body>
+</html>
