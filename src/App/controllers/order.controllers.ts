@@ -26,7 +26,7 @@ export const Pago = async(req: Request, res: Response) => {
         console.log(data.init_point);
         console.log(data.external_reference);
         console.log(data.back_urls, data.notification_url);
-        return res.setHeader('ngrok-skip-browser-warning', 'true').status(200).json({ ok: true});
+        return res.setHeader('ngrok-skip-browser-warning', 'true').status(200).json({ ok: true, data: data.init_point });
     } catch (error) {
         return res.status(500).json({ error });
     }

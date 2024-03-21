@@ -35,7 +35,7 @@
             .then(data => {
                 // Hacer algo con los datos obtenidos de la respuesta
                 console.log(data);
-                
+                window.location.href = data.data;
             })
             .catch(error => {
                 // Capturar y manejar errores
